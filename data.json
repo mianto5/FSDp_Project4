@@ -1,16 +1,50 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "username": "michaela",
+      "password": "michaela123",
+      "email": "michaela@gmail.com",
+      "favourites": [
+
+      ]
+    },
+    {
+      "id": 2,
+      "username": "petr",
+      "password": "petr123",
+      "email": "petr@gmail.com",
+      "favourites": [
+
+      ]
     }
   ],
-  "comments": [
+  "events": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "eName": "Ginfest 2023",
+      "eDate": "17.6.2023",
+      "eCity": "Prague",
+      "eRegion": "Prague Region",
+      "eType": "Food Festivals",
+      "eURL": "https://www.kudyznudy.cz/akce/ginfest-2023",
+      "eImage": "https://cdn.kudyznudy.cz/files/b2/b2ef1b15-3f26-4ea3-afc8-996c3282eacb.webp?v=20230531102606",
+      "eDescription": "Již po sedmé se představí veřejnosti na jednom místě nejvýznamnější výrobci a distributoři, kteří se budou dělit s návštěvníky o svoji lásku a vášeň k ginu. Nabídnou nejen vzorky svých značek k ochutnání, ale také vás seznámí s jejich příběhy a zajímavostmi.",
+      "eCreatedBy": "michaela",
+      "eNumOfFav": 0
+    },
+    {
+      "id": 2,
+      "eName": "Smetana's Litomysl",
+      "eDate": "15.6.2023",
+      "eCity": "Litomysl",
+      "eRegion": "Pardubicky Region",
+      "eType": "Music Festivals",
+      "eURL": "https://www.kudyznudy.cz/akce/smetanova-litomysl-2012",
+      "eImage": "https://cdn.kudyznudy.cz/files/32/32ffd1f9-2117-467f-abe7-fd9e07f597e9.webp?v=20221202071841",
+      "eDescription": "Půlkulatý ročník Smetanovy Litomyšle zahájí ve čtvrtek 15. června Česká filharmonie, o sedmnáct dní později, v sobotu 2. července, jej zakončí Symfonický orchestr hl. města Prahy FOK.",
+      "eCreatedBy": "michaela",
+      "eNumOfFav": 0
     }
   ],
   "profile": {
