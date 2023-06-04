@@ -4,7 +4,7 @@ const initialState = {
   loginstatus: "",
   username: sessionStorage.getItem("username") || "",
   isloggedin: !!sessionStorage.getItem("username"),
-  user: { username: "", email: "", id: 0 },
+  user: { id: 0, username: "", email: "", favourites: [] },
   registerstatus: "failure",
 };
 

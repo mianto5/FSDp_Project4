@@ -5,18 +5,26 @@
       "username": "michaela",
       "password": "michaela123",
       "email": "michaela@gmail.com",
-      "favourites": [
-
-      ]
+      "favourites": []
     },
     {
       "id": 2,
       "username": "petr",
       "password": "petr123",
       "email": "petr@gmail.com",
-      "favourites": [
-
-      ]
+      "favourites": []
+    },
+    {
+      "username": "lubor",
+      "password": "lubor123",
+      "email": "lubor@gmail.com",
+      "id": 3
+    },
+    {
+      "username": "ema",
+      "password": "ema123",
+      "email": "ema@gmail.com",
+      "id": 4
     }
   ],
   "events": [

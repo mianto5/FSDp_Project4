@@ -1,8 +1,14 @@
 import React from "react";
 import "../style/NavBar.css";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../redux/userslice";
 
 export default function NavBar() {
+  const isloggedin = useSelector((state) => state.userreducer.isloggedin);
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.userreducer.username);
+
   return (
     <div>
       {/* styling navigační lišty ?? */}
@@ -39,43 +45,66 @@ export default function NavBar() {
                   All Events
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to="/my-events"
-                >
-                  My Events
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to="/my-favourites"
-                >
-                  My Favourites
-                </NavLink>
-              </li>
-              {/* <li className='nav-item'>
-                    Log Out
-                </li> */}
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/login">
-                  Log In
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to="/register"
-                >
-                  Register
-                </NavLink>
-              </li>
+              {isloggedin && (
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    aria-current="page"
+                    to="/my-events"
+                  >
+                    My Events
+                  </NavLink>
+                </li>
+              )}
+              {isloggedin && (
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    aria-current="page"
+                    to="/my-favourites"
+                  >
+                    My Favourites
+                  </NavLink>
+                </li>
+              )}
+              {isloggedin && (
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/"
+                    onClick={() => dispatch(logoutUser())}
+                  >
+                    Logout
+                  </a>
+                </li>
+              )}
+              {!isloggedin && (
+                <li className="nav-item">
+                  <NavLink className="nav-link" aria-current="page" to="/login">
+                    Log In
+                  </NavLink>
+                </li>
+              )}
+              {!isloggedin && (
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    aria-current="page"
+                    to="/register"
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
+          {isloggedin && (
+            <div>
+              <NavLink className="nav-link" to={`/profile/${username}`}>
+                {username}
+              </NavLink>
+            </div>
+          )}
         </div>
       </nav>
     </div>
