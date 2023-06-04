@@ -10,12 +10,12 @@ export default function Event({ event }) {
   if (event !== undefined) {
     pageContent = (
       <div className="row mt-5">
-        <div className="col-md-6">
+        <div className="col-md-4">
           <p>
             <img src={event.eImage} className="img-fluid" />
           </p>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-8">
           <p>{event.eName}</p>
           <p>{event.eDate}</p>
           <p>{event.eRegion}</p>

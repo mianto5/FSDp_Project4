@@ -16,12 +16,12 @@ export default function AllEvents() {
     if (eStatus === "idle") {
       dispatch(fetchEvents());
     }
-  }, []); /* tyto hranaté závorky jsou velmi důležité !! */
+  }, [eStatus]); /* tyto hranaté závorky jsou velmi důležité !! */
 
   let pageContent = "";
   if (eStatus === "success") {
     pageContent = (
-      <div className="container">
+      <div className="container mt-4">
         <h3>All Available Events</h3>
         {events.map((event) => (
           <Event key={event.id} event={event} />

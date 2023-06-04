@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import AddEvent from './components/AddEvent';
 import AllEvents from './components/AllEvents';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -17,7 +18,9 @@ function App() {
       <Routes>
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/all-events' element={<AllEvents/>}></Route>
-        <Route path='/my-events' element={<MyEvents/>}></Route>
+        <Route path='/my-events' element={<MyEvents/>}>
+          <Route path='/my-events/add' element={<AddEvent/>}></Route>
+        </Route>
         <Route path='/my-favourites' element={<MyFavourites/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
