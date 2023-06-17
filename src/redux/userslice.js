@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   loginstatus: "",
   username: sessionStorage.getItem("username") || "",
-  isloggedin: !!sessionStorage.getItem("username"),
+  isloggedin: false,
   user: { id: 0, username: "", email: "", favourites: [] },
   registerstatus: "failure",
 };
@@ -54,6 +54,7 @@ const userslice = createSlice({
     logoutUser: (state, action) => {
       sessionStorage.removeItem("username");
       state.loginstatus = "failure";
+      state.isloggedin = false;
       state.username = "";
     },
     changeRegisterStatus: (state) => {

@@ -1,8 +1,6 @@
 import React from "react";
-import "../style/NavBar.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../redux/userslice";
 
 export default function NavBar() {
   const isloggedin = useSelector((state) => state.userreducer.isloggedin);
@@ -29,7 +27,7 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/home">
+              <NavLink className="nav-link" aria-current="page" to="/">
                 Home
               </NavLink>
             </li>
@@ -65,21 +63,10 @@ export default function NavBar() {
               </li>
             )} */}
             {isloggedin && (
-              <div>
-                <NavLink className="nav-link" to={`/profile/${username}`}>
-                  {username}
-                </NavLink>
-              </div>
-            )}
-            {isloggedin && (
               <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="/"
-                  onClick={() => dispatch(logoutUser())}
-                >
-                  Logout
-                </a>
+                <NavLink className="nav-link" aria-current="page" to="/profile">
+                  Profile
+                </NavLink>
               </li>
             )}
             {!isloggedin && (

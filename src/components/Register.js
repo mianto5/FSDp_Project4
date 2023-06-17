@@ -1,41 +1,41 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { registerUser } from '../redux/userslice'
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../redux/userslice";
 
 const initialState = {
-  "username":"",
-  "password":"",
-  "email":""
-}
+  username: "",
+  password: "",
+  email: "",
+};
 
 export default function Register() {
-
   const [user, setUser] = useState(initialState);
 
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  let registerStatus = useSelector((state)=> state.userreducer.registerstatus);
+  let registerStatus = useSelector((state) => state.userreducer.registerstatus);
 
-  useEffect(()=>{
-    if(registerStatus === "success")
-      navigate("/login");
-  }, [registerStatus])
+  useEffect(() => {
+    if (registerStatus === "success") navigate("/login");
+  }, [registerStatus]);
 
   console.log("registerStatus: ", registerStatus);
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser(user));
-  }
+  };
 
   return (
-    <div className="container">
-      <h1>Register</h1>
+    <div className="container px-4 px-lg-5">
+      <p></p>
+      <h3>Create an Account</h3>
+      <p></p>
       <form>
-        <div className="mb-3">
+        <div className="col-sm-12 col-md-6 col-lg-6">
           <label htmlFor="formGroupExampleInput2" className="form-label">
-            Username
+            Username:
           </label>{" "}
           <input
             type="text"
@@ -48,10 +48,11 @@ export default function Register() {
             id="formGroupExampleInput2"
             placeholder="Username"
           />
+          <p></p>
         </div>
-        <div className="mb-3">
+        <div className="col-sm-12 col-md-6 col-lg-6">
           <label htmlFor="formGroupExampleInput2" className="form-label">
-            Email
+            Email:
           </label>{" "}
           <input
             type="email"
@@ -64,10 +65,11 @@ export default function Register() {
             id="formGroupExampleInput2"
             placeholder="Email"
           />
+          <p></p>
         </div>
-        <div className="mb-3">
+        <div className="col-sm-12 col-md-6 col-lg-6">
           <label htmlFor="formGroupExampleInput2" className="form-label">
-            Password
+            Password:
           </label>{" "}
           <input
             type="password"
@@ -80,6 +82,7 @@ export default function Register() {
             id="formGroupExampleInput2"
             placeholder="Password"
           />
+          <p></p>
         </div>
         <button
           type="submit"

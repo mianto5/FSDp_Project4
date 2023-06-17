@@ -16,12 +16,13 @@ function App() {
     <BrowserRouter>
       <NavBar/>
       <Routes>
-        <Route path='/home' element={<Home/>}></Route>
+        <Route path='/' element={<Home/>}></Route>
         <Route path='/all-events' element={<AllEvents/>}></Route>
         <Route path='/my-events' element={<MyEvents/>}>
           <Route path='/my-events/add' element={<AddEvent/>}></Route>
         </Route>
         <Route path='/my-favourites' element={<MyFavourites/>}></Route>
+        <Route path='/profile' element={<Profile/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
       </Routes>

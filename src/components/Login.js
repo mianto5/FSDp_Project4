@@ -30,16 +30,18 @@ export default function Login({ setStatus, setUsername }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(user));
+    navigate("/profile");
   };
 
   return (
-    <div className="container">
-      <h1>Login</h1>
-      <p style={{ color: "red" }}>{error && error}</p>
+    <div className="container px-4 px-lg-5">
+      <p></p>
+      <h3>Log In to Share Your Events</h3>
+      <p></p>
       <form>
-        <div className="mb-3">
+        <div className="col-sm-12 col-md-6 col-lg-6">
           <label htmlFor="formGroupExampleInput2" className="form-label">
-            Username
+            Username:
           </label>{" "}
           <input
             type="text"
@@ -52,10 +54,11 @@ export default function Login({ setStatus, setUsername }) {
             id="formGroupExampleInput2"
             placeholder="Username"
           />
+          <p></p>
         </div>
-        <div className="mb-3">
+        <div className="col-sm-12 col-md-6 col-lg-6">
           <label htmlFor="formGroupExampleInput2" className="form-label">
-            Password
+            Password:
           </label>{" "}
           <input
             type="password"
@@ -68,6 +71,7 @@ export default function Login({ setStatus, setUsername }) {
             id="formGroupExampleInput2"
             placeholder="Password"
           />
+          <p></p>
         </div>
         <button
           type="submit"
