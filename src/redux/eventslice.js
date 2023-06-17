@@ -37,7 +37,8 @@ const eventslice = createSlice({
   extraReducers(builder) {
     builder.addCase(fetchEvents.fulfilled, (state, action) => {
       state.status = "success";
-      state.events = state.events.concat(action.payload);
+      /* state.events = state.events.concat(action.payload); */
+      state.events = action.payload;
     });
     builder.addCase(fetchEvents.rejected, (state, action) => {
       state.status = "failure";
@@ -48,6 +49,7 @@ const eventslice = createSlice({
     });
     builder.addCase(addEvent.rejected, (state, action) => {
       state.eventstatus = "failure";
+      state.status = "idle";
     });
   },
 });
