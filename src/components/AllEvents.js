@@ -9,6 +9,8 @@ export default function AllEvents() {
   const eStatus = eState.status;
   const events = eState.events;
 
+  let sortedEvents = [...events].sort((a, b) => (a.eName > b.eName ? 1 : -1));
+
   console.log("eState: ", eState);
   console.log("eStatus: ", eStatus);
   console.log("events: ", events);
@@ -21,11 +23,14 @@ export default function AllEvents() {
   let pageContent = "";
   if (eStatus === "success") {
     pageContent = (
-      <div className="container mt-4">
+      <div className="container px-4 px-lg-5">
+        <p></p>
         <h3>All Available Events</h3>
-        {events.map((event) => (
+        <div className="row gx-4 gx-lg-5 row-cols-1 row-cols-md-1 row-cols-lg-2 justify-content-center">
+        {sortedEvents.map((event) => (
           <Event key={event.id} event={event} />
         ))}
+        </div>
       </div>
     );
   }

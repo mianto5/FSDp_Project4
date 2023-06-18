@@ -10,18 +10,23 @@ export default function Event({ event }) {
   if (event !== undefined) {
     pageContent = (
       <div className="row mt-5">
-        <div className="col-md-4">
+        <div className="col-sm-6 col-md-6">
           <p>
-            <img src={event.eImage} className="img-fluid" />
+            <img
+              src={event.eImage}
+              className="img-fluid rounded mb-4 mb-lg-0"
+            />
           </p>
         </div>
-        <div className="col-md-8">
-          <p>{event.eName}</p>
+        <div className="col-sm-6 col-md-6">
+          <p>
+            <h5>{event.eName}</h5>
+          </p>
           <p>{event.eDate}</p>
           <p>{event.eRegion}</p>
-          {/* <div className="">
-              { <button className="btn btn-warning" onClick={onAddToCart}>ADD TO CART</button> }
-            </div> */}
+          <a className="btn btn-primary btn-sm" href="#!">
+            More Info
+          </a>
         </div>
       </div>
     );
