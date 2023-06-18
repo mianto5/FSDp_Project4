@@ -13,7 +13,7 @@ export default function MyEvents() {
 
   useEffect(() => {
     if (eStatus === "idle") {
-      console.log("eStatus is idle again!")
+      console.log("eStatus is idle again!");
       dispatch(fetchEvents());
     }
   }, [eStatus]); /* tyto hranaté závorky jsou velmi důležité !! */
@@ -29,11 +29,15 @@ export default function MyEvents() {
     userEvents.length > 0
   ) {
     pageContent = (
-      <div className="container mt-4">
+      <div className="container px-4 px-lg-5">
         <div className="row">
           <div className="col-md-8">
+            <p></p>
             <h3>My Added Events</h3>
-            <Link to={`add`}>ADD NEW EVENT</Link>
+            <p></p>
+            <Link className="btn btn-primary btn-sm" to={`add`}>
+              ADD NEW EVENT
+            </Link>
             {userEvents.map((event) => (
               <Event key={event.id} event={event} />
             ))}

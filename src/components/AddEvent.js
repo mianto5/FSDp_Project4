@@ -36,7 +36,9 @@ export default function AddEvent() {
 
   return (
     <div className="container">
-      <h2>Add New Event</h2>
+      <p></p>
+      <h3>Add New Event</h3>
+      <p></p>
       <form>
         <div className="mb-3">
           <label htmlFor="formGroupExampleInput2" className="form-label">
