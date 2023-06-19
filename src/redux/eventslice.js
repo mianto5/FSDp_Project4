@@ -30,6 +30,13 @@ export const addEvent = createAsyncThunk("add/Event", async (event) => {
   return Promise.reject("failure");
 });
 
+export const deleteEvent = createAsyncThunk("delete/Event", async (id) => {
+  let response = await fetch(`http://localhost:3000/events/` + id, {
+    method: "DELETE",
+  });
+  return Promise.resolve("success");
+});
+
 const eventslice = createSlice({
   name: "events",
   initialState,
@@ -49,6 +56,9 @@ const eventslice = createSlice({
     });
     builder.addCase(addEvent.rejected, (state, action) => {
       state.eventstatus = "failure";
+      state.status = "idle";
+    });
+    builder.addCase(deleteEvent.fulfilled, (state, action) => {
       state.status = "idle";
     });
   },

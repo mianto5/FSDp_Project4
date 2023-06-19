@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   loginstatus: "",
   username: sessionStorage.getItem("username") || "",
-  isloggedin: false,
+  userLoggedIn: !!sessionStorage.getItem("username"),
   user: { id: 0, username: "", email: "", favourites: [] },
   registerstatus: "failure",
 };
@@ -54,7 +54,7 @@ const userslice = createSlice({
     logoutUser: (state, action) => {
       sessionStorage.removeItem("username");
       state.loginstatus = "failure";
-      state.isloggedin = false;
+      state.userLoggedIn = false;
       state.username = "";
     },
     changeRegisterStatus: (state) => {
@@ -65,13 +65,13 @@ const userslice = createSlice({
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.loginstatus = "success";
       state.username = action.payload;
-      state.isloggedin = true;
+      state.userLoggedIn = true;
       sessionStorage.setItem("username", state.username);
     });
     builder.addCase(loginUser.rejected, (state, action) => {
       state.loginstatus = "failure";
       state.username = "";
-      state.isloggedin = false;
+      state.userLoggedIn = false;
     });
     builder.addCase(registerUser.fulfilled, (state, action) => {
       state.registerstatus = "success";
@@ -85,9 +85,7 @@ const userslice = createSlice({
   },
 });
 
-export let { isloggedin } = (state) => state.userreducer.isloggedin;
+export let { userLoggedIn } = (state) => state.userreducer.userLoggedIn;
 export let { logoutUser, changeRegisterStatus } = userslice.actions;
-
-console.log("isloggedin: ", isloggedin);
 
 export default userslice.reducer;

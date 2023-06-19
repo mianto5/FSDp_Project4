@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function NavBar() {
-  const isloggedin = useSelector((state) => state.userreducer.isloggedin);
+  let userLoggedIn = useSelector((state) => state.userreducer.userLoggedIn);
   const dispatch = useDispatch();
   const username = useSelector((state) => state.userreducer.username);
 
@@ -40,7 +40,7 @@ export default function NavBar() {
                 All Events
               </NavLink>
             </li>
-            {isloggedin && (
+            {userLoggedIn && (
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
@@ -51,7 +51,7 @@ export default function NavBar() {
                 </NavLink>
               </li>
             )}
-            {/* {isloggedin && (
+            {/* {userLoggedIn && (
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
@@ -62,21 +62,21 @@ export default function NavBar() {
                 </NavLink>
               </li>
             )} */}
-            {isloggedin && (
+            {userLoggedIn && (
               <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page" to="/profile">
                   Profile
                 </NavLink>
               </li>
             )}
-            {!isloggedin && (
+            {!userLoggedIn && (
               <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page" to="/login">
                   Log In
                 </NavLink>
               </li>
             )}
-            {!isloggedin && (
+            {!userLoggedIn && (
               <li className="nav-item">
                 <NavLink
                   className="nav-link"

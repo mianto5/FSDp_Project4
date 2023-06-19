@@ -10,6 +10,7 @@ import MyFavourites from './components/MyFavourites';
 import NavBar from './components/NavBar';
 import Profile from './components/Profile';
 import Register from './components/Register';
+import EventDetail from './components/EventDetail';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/my-events/add' element={<AddEvent/>}></Route>
         </Route>
         <Route path='/my-favourites' element={<MyFavourites/>}></Route>
+        <Route path='/events/:id' element={<EventDetail/>}></Route>
         <Route path='/profile' element={<Profile/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>

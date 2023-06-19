@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser, changeRegisterStatus } from "../redux/userslice";
+import { loginUser, changeRegisterStatus, fetchUserByUsername } from "../redux/userslice";
 const initialState = {
   "username":"",
   "password":""
@@ -14,6 +14,7 @@ export default function Login({ setStatus, setUsername }) {
   let navigate = useNavigate();
   let dispatch = useDispatch();
 
+  const userLoggedIn = useSelector((state) => state.userreducer.userLoggedIn);
   const loginStatus = useSelector((state) => state.userreducer.loginstatus);
   const registerStatus = useSelector(
     (state) => state.userreducer.registerstatus
@@ -23,14 +24,17 @@ export default function Login({ setStatus, setUsername }) {
 
   useEffect(() => {
     dispatch(changeRegisterStatus());
-    if (loginStatus === "success") navigate("/home");
+    if (loginStatus === "success") {
+      dispatch(fetchUserByUsername(user.username));
+      navigate("/profile");
+    }
     else if (loginStatus === "failure") setError("Invalid Credentials");
   }, [loginStatus]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(user));
-    navigate("/profile");
+    /* navigate("/profile"); */
   };
 
   return (

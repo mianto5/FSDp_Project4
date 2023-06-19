@@ -4,19 +4,19 @@ import { logoutUser, fetchUserByUsername} from "../redux/userslice";
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
-  const isloggedin = useSelector((state) => state.userreducer.isloggedin);
+  const userLoggedIn = useSelector((state) => state.userreducer.userLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const username = useSelector((state) => state.userreducer.username);
   let user = useSelector((state) => state.userreducer.user);
 
   useEffect(() => {
-    console.log("isloggedin: ", isloggedin)
-    if (!isloggedin) {
+    console.log("Profile userLoggedIn: ", userLoggedIn)
+    if (!userLoggedIn) {
       navigate("/login");
     }
-    /* if(user.id === 0)   */dispatch(fetchUserByUsername(username));
-  }, [user]);
+    /* if(user.id === 0) dispatch(fetchUserByUsername(username)); */
+  }, [userLoggedIn]);
 
   return (
     <div className="container px-4 px-lg-5">

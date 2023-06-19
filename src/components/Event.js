@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { useParams, createSearchParams, useNavigate } from "react-router-dom";
+import { NavLink, useParams, createSearchParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteEvent } from "../redux/eventslice";
+/* import EventDetail from "./EventDetail"; */
 
 export default function Event({ event }) {
-  /* let navigate = useNavigate(); */
-  /* let dispatch = useDispatch(); */
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
+  const username = useSelector((state) => state.userreducer.username);
+
+  const handleDelete = (id) => {
+    dispatch(deleteEvent(id));
+    navigate("/my-events");
+  };
 
   let pageContent = "";
   if (event !== undefined) {
@@ -19,14 +27,24 @@ export default function Event({ event }) {
           </p>
         </div>
         <div className="col-sm-6 col-md-6">
-          <p>
-            <h5>{event.eName}</h5>
-          </p>
+          <h5>{event.eName}</h5>
           <p>{event.eDate}</p>
           <p>{event.eRegion}</p>
-          <a className="btn btn-primary btn-sm" href="#!">
+          {/* <a className="btn btn-primary btn-sm" href={"/events/"+event.id}>
             More Info
-          </a>
+          </a> */}
+          {/* {event => <EventDetail event={event} /> } */}
+          <NavLink className="btn btn-primary btn-sm" to={"/events/"+event.id}>
+            More Info
+          </NavLink>
+          &nbsp;
+          {username===event.eCreatedBy && (<button
+              onClick={() => handleDelete(event.id)}
+              type="button"
+              className="btn btn-danger btn-sm text-white position-absolute"
+            >
+              Delete
+            </button>)}
         </div>
       </div>
     );
