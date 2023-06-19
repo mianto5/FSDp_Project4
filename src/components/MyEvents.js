@@ -11,6 +11,8 @@ export default function MyEvents() {
   const events = eState.events;
   const eUsername = useSelector((state) => state.userreducer.username);
 
+  let sortedEvents = [...events].sort((a, b) => (a.eName > b.eName ? 1 : -1));
+
   useEffect(() => {
     if (eStatus === "idle") {
       console.log("eStatus is idle again!");
@@ -18,7 +20,7 @@ export default function MyEvents() {
     }
   }, [eStatus]); /* tyto hranaté závorky jsou velmi důležité !! */
 
-  let userEvents = events.filter((event) => event.eCreatedBy === eUsername);
+  let userEvents = sortedEvents.filter((event) => event.eCreatedBy === eUsername);
   console.log("userEvents: ", userEvents);
   console.log("eStatus: ", eStatus);
 

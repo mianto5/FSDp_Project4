@@ -18,7 +18,7 @@ export default function AllEvents() {
     if (eStatus === "idle") {
       dispatch(fetchEvents());
     }
-  }, [eStatus]); /* tyto hranaté závorky jsou velmi důležité !! */
+  }, [eStatus]); 
 
   let pageContent = "";
   if (eStatus === "success") {
