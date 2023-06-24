@@ -18,12 +18,10 @@ export default function Home() {
   let last1event;
   let last2event;
   let last3event;
-  console.log("last1event: ", last1event);
 
   let pageContent = "";
   if (eStatus === "success") {
     last1event = events[events.length - 1];
-    console.log("last1event if success: ", last1event);
     last2event = events[events.length - 2];
     last3event = events[events.length - 3];
     pageContent = (

@@ -4,21 +4,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { addEvent } from "../redux/eventslice";
 
 const initialState = {
-  "eName": "",
-  "eDate": "",
-  "eCity": "",
-  "eRegion": "",
-  "eType": "",
-  "eURL": "",
-  "eImage": "",
-  "eDescription": "",
-  "eCreatedBy": "",
-  "eNumOfFav": 0,
+  eName: "",
+  eDate: "",
+  eCity: "",
+  eRegion: "",
+  eType: "",
+  eURL: "",
+  eImage: "",
+  eDescription: "",
+  eCreatedBy: "",
+  eNumOfFav: 0,
 };
 
 export default function AddEvent() {
   const [addedEvent, setAddedEvent] = useState(initialState);
-
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let eventStatus = useSelector((state) => state.eventreducer.eventstatus);
@@ -26,8 +25,6 @@ export default function AddEvent() {
   useEffect(() => {
     if (eventStatus === "success") navigate("/my-events");
   }, [eventStatus]);
-
-  console.log("eventStatus: ", eventStatus);
 
   const handleSubmit = (e) => {
     e.preventDefault();

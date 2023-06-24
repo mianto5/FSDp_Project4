@@ -4,10 +4,21 @@ const initialState = {
   events: [],
   status: "idle",
   error: "",
-  event: { id: 0, eName: "", eDate: "", eCity: "", eRegion: "", eType: "", eURL: "",
-  eImage: "", eDescription: "", eCreatedBy: "", eNumOfFav: 0},
+  event: {
+    id: 0,
+    eName: "",
+    eDate: "",
+    eCity: "",
+    eRegion: "",
+    eType: "",
+    eURL: "",
+    eImage: "",
+    eDescription: "",
+    eCreatedBy: "",
+    eNumOfFav: 0,
+  },
   eventstatus: "",
-  detailstatus: ""
+  detailstatus: "",
 };
 
 export const fetchEvents = createAsyncThunk("fetch/Events", async () => {
@@ -16,8 +27,7 @@ export const fetchEvents = createAsyncThunk("fetch/Events", async () => {
 });
 
 export const getEventById = createAsyncThunk("get/Event", async (id) => {
-  let response = await fetch("http://localhost:3000/events/"+id);
-  /* console.log("response.json(): ", response.json()) */
+  let response = await fetch("http://localhost:3000/events/" + id);
   return response.json();
 });
 
@@ -32,7 +42,6 @@ export const addEvent = createAsyncThunk("add/Event", async (event) => {
     },
   });
   let data = await response.json();
-  console.log("Event data: ", data);
   if (data !== null || data !== undefined) return Promise.resolve("success");
   return Promise.reject("failure");
 });
@@ -51,7 +60,6 @@ const eventslice = createSlice({
   extraReducers(builder) {
     builder.addCase(fetchEvents.fulfilled, (state, action) => {
       state.status = "success";
-      /* state.events = state.events.concat(action.payload); */
       state.events = action.payload;
     });
     builder.addCase(fetchEvents.rejected, (state, action) => {
@@ -60,8 +68,6 @@ const eventslice = createSlice({
     builder.addCase(getEventById.fulfilled, (state, action) => {
       state.detailstatus = "success";
       state.event = action.payload;
-      /* console.log("action.payload: ", action.payload)
-      console.log("state.event v eventslice: ", state.event) */
     });
     builder.addCase(getEventById.rejected, (state, action) => {
       state.detailstatus = "failure";
@@ -80,5 +86,4 @@ const eventslice = createSlice({
   },
 });
 
-console.log(initialState.status);
 export default eventslice.reducer;

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser, fetchUserByUsername} from "../redux/userslice";
-import { useNavigate } from 'react-router-dom'
+import { logoutUser } from "../redux/userslice";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const userLoggedIn = useSelector((state) => state.userreducer.userLoggedIn);
@@ -11,11 +11,9 @@ export default function Profile() {
   let user = useSelector((state) => state.userreducer.user);
 
   useEffect(() => {
-    console.log("Profile userLoggedIn: ", userLoggedIn)
     if (!userLoggedIn) {
       navigate("/login");
     }
-    /* if(user.id === 0) dispatch(fetchUserByUsername(username)); */
   }, [userLoggedIn]);
 
   return (

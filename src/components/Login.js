@@ -3,44 +3,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser, changeRegisterStatus, fetchUserByUsername } from "../redux/userslice";
 const initialState = {
-  "username":"",
-  "password":""
-}
+  username: "",
+  password: "",
+};
 
-export default function Login({ setStatus, setUsername }) {
+export default function Login() {
   const [user, setUser] = useState(initialState);
   const [error, setError] = useState();
-
   let navigate = useNavigate();
   let dispatch = useDispatch();
-
-  const userLoggedIn = useSelector((state) => state.userreducer.userLoggedIn);
   const loginStatus = useSelector((state) => state.userreducer.loginstatus);
-  const registerStatus = useSelector(
-    (state) => state.userreducer.registerstatus
-  );
-
-  console.log("loginStatus: ", loginStatus);
 
   useEffect(() => {
     dispatch(changeRegisterStatus());
     if (loginStatus === "success") {
       dispatch(fetchUserByUsername(user.username));
       navigate("/profile");
-    }
-    else if (loginStatus === "failure") setError("Invalid Credentials");
+    } else if (loginStatus === "failure") setError("Invalid Credentials");
   }, [loginStatus]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(user));
-    /* navigate("/profile"); */
   };
 
   return (
     <div className="container px-4 px-lg-5">
       <p></p>
       <h3>Log In to Share Your Events</h3>
+      <p style={{color:'red'}}>{error && error}</p>
       <p></p>
       <form>
         <div className="col-sm-12 col-md-6 col-lg-6">

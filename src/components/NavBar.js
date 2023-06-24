@@ -1,11 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function NavBar() {
   let userLoggedIn = useSelector((state) => state.userreducer.userLoggedIn);
-  const dispatch = useDispatch();
-  const username = useSelector((state) => state.userreducer.username);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,32 +30,20 @@ export default function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                aria-current="page"
-                to="/all-events"
-              >
+              <NavLink className="nav-link" aria-current="page" to="/all-events">
                 All Events
               </NavLink>
             </li>
             {userLoggedIn && (
               <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to="/my-events"
-                >
+                <NavLink className="nav-link" aria-current="page" to="/my-events">
                   My Events
                 </NavLink>
               </li>
             )}
             {/* {userLoggedIn && (
               <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to="/my-favourites"
-                >
+                <NavLink className="nav-link" aria-current="page" to="/my-favourites">
                   My Favourites
                 </NavLink>
               </li>
@@ -78,11 +64,7 @@ export default function NavBar() {
             )}
             {!userLoggedIn && (
               <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to="/register"
-                >
+                <NavLink className="nav-link" aria-current="page" to="/register">
                   Register
                 </NavLink>
               </li>

@@ -13,14 +13,9 @@ export const loginUser = createAsyncThunk("login/User", async (user) => {
     `http://localhost:3000/users?username=${user.username}`
   );
   let fetchuser = await response.json();
-  console.log("fetchuser: ", fetchuser);
-  console.log("user: ", user);
-  console.log("fetchuser.length > 0: ", fetchuser.length > 0);
-  console.log("fetchuser[0].password === user.password: ", fetchuser[0].password === user.password);
-  if (fetchuser.length > 0 && fetchuser[0].password === user.password){
-    console.log("promise resolved successfully");
+  if (fetchuser.length > 0 && fetchuser[0].password === user.password) {
     return Promise.resolve(fetchuser[0].username);
-    }
+  }
   return Promise.reject("error");
 });
 

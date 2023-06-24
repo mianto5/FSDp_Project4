@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../redux/userslice";
-
 const initialState = {
   username: "",
   password: "",
@@ -11,7 +10,6 @@ const initialState = {
 
 export default function Register() {
   const [user, setUser] = useState(initialState);
-
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let registerStatus = useSelector((state) => state.userreducer.registerstatus);
@@ -19,8 +17,6 @@ export default function Register() {
   useEffect(() => {
     if (registerStatus === "success") navigate("/login");
   }, [registerStatus]);
-
-  console.log("registerStatus: ", registerStatus);
 
   const handleSubmit = (e) => {
     e.preventDefault();

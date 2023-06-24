@@ -1,38 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getEventById } from "../redux/eventslice";
-const initialState = {
-  id: 0,
-  eName: "",
-  eDate: "",
-  eCity: "",
-  eRegion: "",
-  eType: "",
-  eURL: "",
-  eImage: "",
-  eDescription: "",
-  eCreatedBy: "",
-  eNumOfFav: 0,
-};
 
 export default function EventDetail() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const detailStatus = useSelector((state) => state.eventreducer.detailstatus);
   let event = useSelector((state) => state.eventreducer.event);
   let { id } = useParams();
   id = Number(id);
 
-  console.log("id: ", id);
-
   useEffect(() => {
-    /* if (eStatus === "idle") */
-    console.log(dispatch(getEventById(id)));
-  }, [id, detailStatus]);
-
-  console.log("detailStatus: ", detailStatus);
-  if (detailStatus === "success") console.log("event: ", event);
+    dispatch(getEventById(id));
+  }, [id]);
 
   let pageContent = "";
   if (event !== undefined) {
@@ -67,21 +47,25 @@ export default function EventDetail() {
         </div>
         <p></p>
         <div className="col-xs-12 col-sm-10 col-md-10">
-        <p><b>Description:</b> {event.eDescription}</p>
-        <p><b>Original Website:</b> <a href={event.eURL}>{event.eURL}</a></p>
+          <p>
+            <b>Description:</b> {event.eDescription}
+          </p>
+          <p>
+            <b>Original Website:</b> <a href={event.eURL}>{event.eURL}</a>
+          </p>
         </div>
         <p></p>
         <button
-              onClick={() => navigate(-1)}
-              type="button"
-              className="btn btn-primary btn-sm"
-            >
-              Go Back
-            </button>
+          onClick={() => navigate(-1)}
+          type="button"
+          className="btn btn-primary btn-sm"
+        >
+          Go Back
+        </button>
       </div>
     );
   } else {
-    pageContent = <div>Problem</div>;
+    pageContent = <div>There is no existing event with this ID.</div>;
   }
 
   return <div>{pageContent}</div>;

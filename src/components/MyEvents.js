@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../redux/eventslice";
 import { Link, Outlet } from "react-router-dom";
@@ -15,14 +15,13 @@ export default function MyEvents() {
 
   useEffect(() => {
     if (eStatus === "idle") {
-      console.log("eStatus is idle again!");
       dispatch(fetchEvents());
     }
-  }, [eStatus]); /* tyto hranaté závorky jsou velmi důležité !! */
+  }, [eStatus]);
 
-  let userEvents = sortedEvents.filter((event) => event.eCreatedBy === eUsername);
-  console.log("userEvents: ", userEvents);
-  console.log("eStatus: ", eStatus);
+  let userEvents = sortedEvents.filter(
+    (event) => event.eCreatedBy === eUsername
+  );
 
   let pageContent = "";
   if (
