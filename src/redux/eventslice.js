@@ -4,13 +4,20 @@ const initialState = {
   events: [],
   status: "idle",
   error: "",
-  user: { id: 0, eName: "", eDate: "", eCity: "", eRegion: "", eType: "", eURL: "",
+  event: { id: 0, eName: "", eDate: "", eCity: "", eRegion: "", eType: "", eURL: "",
   eImage: "", eDescription: "", eCreatedBy: "", eNumOfFav: 0},
   eventstatus: "",
+  detailstatus: ""
 };
 
 export const fetchEvents = createAsyncThunk("fetch/Events", async () => {
   let response = await fetch("http://localhost:3000/events");
+  return response.json();
+});
+
+export const getEventById = createAsyncThunk("get/Event", async (id) => {
+  let response = await fetch("http://localhost:3000/events/"+id);
+  /* console.log("response.json(): ", response.json()) */
   return response.json();
 });
 
@@ -49,6 +56,15 @@ const eventslice = createSlice({
     });
     builder.addCase(fetchEvents.rejected, (state, action) => {
       state.status = "failure";
+    });
+    builder.addCase(getEventById.fulfilled, (state, action) => {
+      state.detailstatus = "success";
+      state.event = action.payload;
+      /* console.log("action.payload: ", action.payload)
+      console.log("state.event v eventslice: ", state.event) */
+    });
+    builder.addCase(getEventById.rejected, (state, action) => {
+      state.detailstatus = "failure";
     });
     builder.addCase(addEvent.fulfilled, (state, action) => {
       state.eventstatus = "success";

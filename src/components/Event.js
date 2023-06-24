@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useParams, createSearchParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent } from "../redux/eventslice";
-/* import EventDetail from "./EventDetail"; */
+import EventDetail from "./EventDetail";
 
 export default function Event({ event }) {
   let navigate = useNavigate();
@@ -33,7 +33,6 @@ export default function Event({ event }) {
           {/* <a className="btn btn-primary btn-sm" href={"/events/"+event.id}>
             More Info
           </a> */}
-          {/* {event => <EventDetail event={event} /> } */}
           <NavLink className="btn btn-primary btn-sm" to={"/events/"+event.id}>
             More Info
           </NavLink>

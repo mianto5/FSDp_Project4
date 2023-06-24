@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { fetchEvents } from "../redux/eventslice";
 
 export default function Home() {
@@ -71,9 +72,12 @@ export default function Home() {
                 />
               </div>
               <div className="card-footer">
-                <a className="btn btn-primary btn-sm" href="#!">
+                <NavLink
+                  className="btn btn-primary btn-sm"
+                  to={"/events/" + last1event.id}
+                >
                   More Info
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -91,9 +95,12 @@ export default function Home() {
                 />
               </div>
               <div className="card-footer">
-                <a className="btn btn-primary btn-sm" href="#!">
+                <NavLink
+                  className="btn btn-primary btn-sm"
+                  to={"/events/" + last2event.id}
+                >
                   More Info
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -111,9 +118,12 @@ export default function Home() {
                 />
               </div>
               <div className="card-footer">
-                <a className="btn btn-primary btn-sm" href="#!">
+                <NavLink
+                  className="btn btn-primary btn-sm"
+                  to={"/events/" + last3event.id}
+                >
                   More Info
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>
