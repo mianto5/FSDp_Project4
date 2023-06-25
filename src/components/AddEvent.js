@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addEvent } from "../redux/eventslice";
+import { addEvent, removeEventstatus } from "../redux/eventslice";
 
 const initialState = {
   eName: "",
@@ -23,7 +23,10 @@ export default function AddEvent() {
   let eventStatus = useSelector((state) => state.eventreducer.eventstatus);
 
   useEffect(() => {
-    if (eventStatus === "success") navigate("/my-events");
+    if (eventStatus === "success"){
+      dispatch(removeEventstatus());
+      navigate("/my-events");
+    } 
   }, [eventStatus]);
 
   const handleSubmit = (e) => {

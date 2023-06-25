@@ -56,7 +56,11 @@ export const deleteEvent = createAsyncThunk("delete/Event", async (id) => {
 const eventslice = createSlice({
   name: "events",
   initialState,
-  reducers: {},
+  reducers: {
+    removeEventstatus: (state, action) => {
+      state.eventstatus = "";
+    }
+  },
   extraReducers(builder) {
     builder.addCase(fetchEvents.fulfilled, (state, action) => {
       state.status = "success";
@@ -86,4 +90,5 @@ const eventslice = createSlice({
   },
 });
 
+export let { removeEventstatus } = eventslice.actions;
 export default eventslice.reducer;

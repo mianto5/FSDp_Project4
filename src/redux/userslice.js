@@ -48,7 +48,7 @@ const userslice = createSlice({
   reducers: {
     logoutUser: (state, action) => {
       sessionStorage.removeItem("username");
-      state.loginstatus = "failure";
+      state.loginstatus = "";
       state.userLoggedIn = false;
       state.username = "";
     },

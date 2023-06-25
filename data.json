@@ -25,6 +25,12 @@
       "password": "ema123",
       "email": "ema@gmail.com",
       "id": 4
+    },
+    {
+      "username": "radka",
+      "password": "radka123",
+      "email": "radka@gmail.com",
+      "id": 5
     }
   ],
   "events": [
@@ -66,19 +72,6 @@
       "eCreatedBy": "petr",
       "eNumOfFav": 0,
       "id": 3
-    },
-    {
-      "eName": "Experience Asian Food at Andel",
-      "eDate": "14.6.2023",
-      "eCity": "Prague",
-      "eRegion": "Prague Region",
-      "eType": "Food Festivals",
-      "eURL": "https://www.kudyznudy.cz/akce/zazij-asii-na-andelu",
-      "eImage": "https://cdn.kudyznudy.cz/files/3f/3f5dd4f6-f601-493d-a2e6-777b2660b37b.webp?v=20230428120054",
-      "eDescription": "Několik asijských zemí za jeden den procestujete, aspoň gastronomicky, aniž byste opustili hranice Prahy. Na akci nazvané Zažij Asii, který proběhne ve středu 14. června v Praze na pěší zóně Anděl, vás totiž čeká ochutnávka toho nejlepší z asijských kuchyní.",
-      "eCreatedBy": "ema",
-      "eNumOfFav": 0,
-      "id": 4
     },
     {
       "eName": "We Eat and Drink in Spanish Style",
